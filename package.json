@@ -1,0 +1,43 @@
+{
+	"name": "claraa.io",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"lint": "prettier --plugin-search-dir . --check . && eslint .",
+		"format": "prettier --plugin-search-dir . --write ."
+	},
+	"devDependencies": {
+		"@fontsource-variable/inter": "^5.0.15",
+		"@fontsource-variable/jetbrains-mono": "^5.0.18",
+		"@fontsource-variable/montserrat": "^5.0.16",
+		"@sveltejs/adapter-auto": "^2.1.1",
+		"@sveltejs/adapter-cloudflare": "^2.3.3",
+		"@sveltejs/adapter-static": "^2.0.3",
+		"@sveltejs/kit": "^1.27.6",
+		"@typescript-eslint/eslint-plugin": "^6.12.0",
+		"@typescript-eslint/parser": "^6.12.0",
+		"autoprefixer": "^10.4.16",
+		"eslint": "^8.54.0",
+		"eslint-config-prettier": "^8.10.0",
+		"eslint-plugin-svelte": "^2.35.0",
+		"lucide-svelte": "^0.292.0",
+		"postcss": "^8.4.31",
+		"postcss-load-config": "^4.0.2",
+		"prettier": "^2.8.0",
+		"prettier-plugin-svelte": "^2.10.1",
+		"saos": "^1.3.1",
+		"svelte": "^4.2.7",
+		"svelte-check": "^3.6.0",
+		"svelte-preprocess": "^5.1.0",
+		"tailwindcss": "^3.3.5",
+		"tslib": "^2.6.2",
+		"typescript": "^5.3.2",
+		"vite": "^4.5.0"
+	},
+	"type": "module"
+}

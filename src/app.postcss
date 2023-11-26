@@ -1,0 +1,29 @@
+@import '@fontsource-variable/montserrat';
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/jetbrains-mono';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+	@apply bg-white dark:bg-stone-900 text-black dark:text-white;
+}
+
+html,
+body {
+	height: 100%;
+}
+
+.card {
+	@apply bg-zinc-800;
+	/* @apply rounded; */
+}
+
+a.card {
+	@apply transition-all hover:brightness-105;
+}
+
+.card-hover {
+	@apply transition-all hover:scale-[101%] hover:shadow-xl hover:brightness-125;
+}
