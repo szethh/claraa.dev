@@ -34,12 +34,14 @@
 
 	<div class=" text-orange-500 text-3xl font-mono max-w-[30%] text-center">
 		<Typewriter
+			duration={75}
+			pause={2000}
 			texts={[
 				{ text: 'Clara :)', color: 'text-purple-500', duration: 5000 },
 				{ text: 'a fullstack developer...', color: 'text-orange-500' },
 				{ text: 'an artificial intelligence student...' },
-				{ text: 'an open source enthusiast...' },
-				{ text: 'a linux hobbyist...' }
+				{ text: 'an open source enthusiast...' }
+				// { text: 'a linux hobbyist...' }
 			]}
 		/>
 	</div>
