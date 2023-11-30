@@ -57,7 +57,7 @@
 	});
 </script>
 
-<div class="flex gap-1">
+<div class="flex gap-1 justify-center">
 	<p class={currentText.color}>
 		{currentText.text.slice(0, charIdx + 1)}<span class="caret">|</span>
 	</p>

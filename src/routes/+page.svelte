@@ -28,9 +28,8 @@
 {/if}
 
 <section class="flex flex-col justify-center items-center gap-4 h-[75vh]">
-	<h1 class="font-extrabold text-9xl font-montserrat">hi!</h1>
-
-	<div class="text-gray-300 text-5xl font-extrabold font-montserrat mt-8">I'm...</div>
+	<h1>hi!</h1>
+	<h3 class="text-gray-300 mt-8">I'm...</h3>
 
 	<div class=" text-orange-500 text-3xl font-mono max-w-[30%] text-center">
 		<Typewriter
@@ -221,7 +220,7 @@
 
 <style lang="postcss">
 	h2 {
-		@apply text-7xl font-extrabold font-montserrat mb-8;
+		@apply mb-8;
 	}
 
 	p {

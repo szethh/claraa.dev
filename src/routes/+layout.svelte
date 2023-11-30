@@ -5,10 +5,10 @@
 	import Header from '$lib/components/header.svelte';
 </script>
 
-<div class="grid grid-rows-[auto_1fr_auto] h-full p-6 mx-4 gap-6">
+<div class="grid grid-rows-[auto_1fr_auto] p-6 mx-4 gap-6">
 	<Header />
 
-	<main class="mx-8">
+	<main class="">
 		<slot />
 	</main>
 

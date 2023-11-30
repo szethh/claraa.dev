@@ -27,3 +27,36 @@ a.card {
 .card-hover {
 	@apply transition-all hover:scale-[101%] hover:shadow-xl hover:brightness-125;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	@apply font-extrabold font-montserrat;
+}
+
+h1 {
+	@apply text-9xl;
+}
+
+h2 {
+	@apply text-7xl;
+}
+
+@media (max-width: 640px) {
+	h2 {
+		@apply text-5xl;
+	}
+}
+
+h3 {
+	@apply text-5xl;
+}
+
+@media (max-width: 640px) {
+	h3 {
+		@apply text-3xl;
+	}
+}
