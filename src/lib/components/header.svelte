@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { Home, Notebook } from 'lucide-svelte';
 	import { derived } from 'svelte/store';
 
 	const blogPost = derived(page, ($page) => ({
@@ -8,11 +9,17 @@
 	}));
 </script>
 
-<nav class="flex gap-12 py-8 px-12 bg-stone-800">
-	<a href="/"><b>Home</b></a>
+<nav class="flex gap-10 py-8 px-12 bg-stone-800">
+	<a href="/" class="flex gap-2 items-center">
+		<Home />
+		<b>Home</b>
+	</a>
 
 	<div class="flex gap-4">
-		<a href="/blog">Blog</a>
+		<a href="/blog" class="flex gap-2 items-center">
+			<Notebook />
+			Blog
+		</a>
 		{#if $blogPost.title}
 			<span class="text-zinc-400">/</span>
 			<a href="/blog/{$blogPost.slug}" class="text-zinc-400">{$blogPost.title}</a>

@@ -6,7 +6,7 @@
 </script>
 
 <!-- grid grid-rows-[auto_1fr_auto] -->
-<div class="gap-6 flex flex-col min-h-screen">
+<div class="gap-6 flex flex-col min-h-svh">
 	<Header />
 
 	<main class="flex-grow mx-4 p-6">

@@ -4,3 +4,5 @@ date: 2024-08-14
 description: A beginner friendly guide to deploying NixOS with Colmena
 # image: /pics/blog/test/a.jpg
 ---
+
+This is my first post! I'm still writing it, this page will update once it's done! :)
