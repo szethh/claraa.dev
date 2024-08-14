@@ -2,6 +2,9 @@
 	"name": "claraa.io",
 	"version": "0.0.1",
 	"private": true,
+	"engines": {
+		"node": ">=20.0.0"
+	},
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
@@ -42,11 +45,9 @@
 		"tailwindcss": "^3.4.9",
 		"tslib": "^2.6.3",
 		"typescript": "^5.5.4",
-		"vite": "^5.4.0"
-	},
-	"type": "module",
-	"dependencies": {
+		"vite": "^5.4.0",
 		"effect": "^3.6.3",
 		"reading-time-estimator": "^1.11.0"
-	}
+	},
+	"type": "module"
 }
