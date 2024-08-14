@@ -7,6 +7,7 @@
 	import { ArrowDown, ArrowUp } from 'lucide-svelte';
 
 	import Saos from 'saos';
+	import Stars from '$lib/components/cv/stars.svelte';
 
 	let scrollY = 0;
 
@@ -165,6 +166,84 @@
 				<a href="https://github.com/szethh/claraa.io" target="_blank">my GitHub</a>.
 			</p>
 		</div>
+
+		<div class="mt-4">
+			<p>The full list of technologies I use:</p>
+			<table class="table-auto border-2 border-slate-500 border-collapse">
+				<thead>
+					<tr>
+						<th>Tech</th>
+						<th>Proficiency</th>
+						<th>Notes</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr>
+						<td width="25%"><TechIcon name="svelte">SvelteKit</TechIcon></td>
+						<td><Stars stars={4} /></td>
+						<td>This is my current favorite framework, and what powers this site!</td>
+					</tr>
+					<tr>
+						<td><TechIcon name="ts">TypeScript</TechIcon></td>
+						<td><Stars stars={4} /></td>
+						<td>
+							Typescript is my go-to language for both frontend and backend development. I use it
+							alongisde SvelteKit to build my apps.
+						</td>
+					</tr>
+					<tr>
+						<td><TechIcon name="effect">Effect</TechIcon></td>
+						<td><Stars stars={3} /></td>
+						<td>
+							I use Effect to build robust and safe web applications, allowing me to build reliable
+							and maintainable code.
+						</td>
+					</tr>
+					<tr>
+						<td><TechIcon name="python">Python</TechIcon></td>
+						<td><Stars stars={5} /></td>
+						<td>
+							I use Python for data science and machine learning projects. It's the language I have
+							most experience with.
+						</td>
+					</tr>
+					<tr>
+						<td><TechIcon name="azure">Azure / Azure DevOps</TechIcon></td>
+						<td><Stars stars={3} /></td>
+						<td>
+							At work I use Azure DevOps to manage my projects. I have experience managing Azure
+							resources and deploying applications to Azure, using Bicep and Azure Pipelines to
+							fully automate app deployments.
+						</td>
+					</tr>
+					<tr>
+						<td><TechIcon name="docker">Docker</TechIcon></td>
+						<td><Stars stars={5} /></td>
+						<td
+							>I have over 3 years of experience containerizing apps with Docker, as well as
+							deploying them with tools like Docker Compose.</td
+						>
+					</tr>
+					<tr>
+						<td><TechIcon name="ansible">Ansible</TechIcon></td>
+						<td><Stars stars={3} /></td>
+						<td
+							>For infrastructure automation, I have used Ansible for a few years. However, I am
+							currently moving away from it, towards Nix.</td
+						>
+					</tr>
+					<tr>
+						<td><TechIcon name="nix">Nix</TechIcon></td>
+						<td><Stars stars={2} /></td>
+						<td>
+							I'm currently learning Nix as a replacement for Ansible. I'm loving it so far, but I'm
+							still learning the ropes.
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 </Saos>
 
@@ -255,6 +334,53 @@
 		100% {
 			transform: translateY(100px);
 			opacity: 0;
+		}
+	}
+
+	thead > tr > th {
+		@apply bg-zinc-800 border-t-2 border-slate-600;
+	}
+
+	tr > td {
+		@apply border-t-2 border-slate-600 bg-neutral-800;
+	}
+
+	tr > td:nth-child(2) {
+		@apply px-0;
+	}
+
+	tr > td:nth-child(3) {
+		@apply px-20;
+	}
+
+	tr > td,
+	th {
+		@apply p-4;
+	}
+
+	/* GENERAL ATTRIBUTES */
+
+	h1 {
+		@apply text-9xl;
+	}
+
+	h2 {
+		@apply text-7xl;
+	}
+
+	@media (max-width: 640px) {
+		h2 {
+			@apply text-5xl;
+		}
+	}
+
+	h3 {
+		@apply text-5xl;
+	}
+
+	@media (max-width: 640px) {
+		h3 {
+			@apply text-3xl;
 		}
 	}
 </style>

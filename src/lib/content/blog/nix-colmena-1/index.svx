@@ -1,0 +1,6 @@
+---
+title: Multi-system NixOS deployment with Colmena
+date: 2024-08-14
+description: A beginner friendly guide to deploying NixOS with Colmena
+# image: /pics/blog/test/a.jpg
+---
