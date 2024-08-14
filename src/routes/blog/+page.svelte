@@ -12,7 +12,9 @@
 	{#each posts as [slug, post]}
 		<a href="/blog/{slug}">
 			<div class="card card-hover p-8 grid grid-cols-[auto_1fr] gap-4">
-				<img src={post.image} alt="no image" class="w-full rounded-lg" />
+				{#if post.image}
+					<img src={post.image} alt="post thumbnail" class="w-full rounded-lg" />
+				{/if}
 
 				<div>
 					<h1>{post.title}</h1>
