@@ -4,12 +4,12 @@
 	export let data;
 </script>
 
-<main>
+<main class="">
 	<BlogPost page={data.page} post={data.post} />
 </main>
 
 <style>
 	main {
-		margin: auto 2rem;
+		margin: auto 25%;
 	}
 </style>

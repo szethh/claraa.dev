@@ -290,9 +290,7 @@
 		</p>
 
 		<p>
-			you can also find me on <TechIcon name="linkedin">
-				<a href="https://www.linkedin.com/in/clara-periago/" target="_blank">LinkedIn</a>
-			</TechIcon>.
+			you can also find me on <TechIcon name="linkedin" cls="!text-cyan-400">LinkedIn</TechIcon>.
 		</p>
 	</section>
 </Saos>

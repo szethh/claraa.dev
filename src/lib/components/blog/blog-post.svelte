@@ -7,6 +7,10 @@
 	export let post: Post;
 </script>
 
+<svelte:head>
+	<title>{post.metadata.title}</title>
+</svelte:head>
+
 <h1>{post.metadata.title}</h1>
 
 <div class="flex gap-2 text-gray-400 mt-1 mb-8">
@@ -15,7 +19,7 @@
 	<p>{fmtDate(post.metadata.date)}</p>
 </div>
 
-<article>
+<article class="blog-post">
 	<svelte:component this={page}>
 		<style>
 			table {
@@ -31,8 +35,8 @@
 		@apply text-4xl;
 	}
 
-	table {
+	/* table {
 		border: 5px solid white;
 		border-collapse: collapse;
-	}
+	} */
 </style>

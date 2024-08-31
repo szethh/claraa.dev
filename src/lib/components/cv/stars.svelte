@@ -4,6 +4,7 @@
 	$: remainder = ((stars - Math.floor(stars)) * 100).toPrecision(2);
 </script>
 
+<!-- FIXME: this doesn't work in safari -->
 <div class="flex gap-1">
 	{#each Array(5) as _, i}
 		{@const fill = i <= stars - 1 ? 'white' : 'none'}
