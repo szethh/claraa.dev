@@ -41,7 +41,7 @@
 
 		<!-- <hr class="not-prose" /> -->
 
-		<div class="text-start">
+		<div class="text-start text-white">
 			<slot name="title">Title</slot>
 		</div>
 
@@ -53,7 +53,7 @@
 	</button>
 
 	{#if open}
-		<div transition:slide class="mt-4 px-4 pb-4">
+		<div transition:slide class="py-4 px-4">
 			<slot name="content">Content</slot>
 		</div>
 	{/if}
