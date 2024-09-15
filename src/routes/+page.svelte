@@ -64,25 +64,18 @@
 	<section>
 		<h2>about me</h2>
 
-		<div class="space-y-8 text-xl font-light">
+		<div class="!space-y-8 text-xl font-light md:max-w-[60%] card p-8">
 			<p>
-				👋 Hello there! I'm Clara Periago, a passionate web developer from Spain 🇪🇸, currently based
-				in Nijmegen, The Netherlands 🇳🇱.
+				👋 Hello there! I'm Clara Periago, a web developer from Spain 🇪🇸, currently based in
+				Nijmegen, The Netherlands 🇳🇱.
 			</p>
 			<p>
-				💻 I specialize in creating dynamic and visually appealing websites, combining my technical
-				skills with a keen eye for design. My work reflects a commitment to delivering high-quality,
-				user-centric web experiences.
+				💻 I specialize in fullstack development with SvelteKit and TypeScript. I also have
+				experience building and deploying artificial intelligence models with Python.
 			</p>
 			<p>
 				📖 Currently, I am pursuing a Bachelor in Artificial Intelligence at Radboud University,
-				where I continue to deepen my knowledge and stay on top of the latest industry trends. This
-				dual focus on academia and professional development allows me to bring fresh insights and
-				innovation to my projects.
-			</p>
-			<p>
-				🚀 I am always excited to take on new challenges and contribute to projects that make a
-				positive impact. Let's connect and explore the possibilities!
+				where I am combining both technical AI development with neuroscience and psychology.
 			</p>
 		</div>
 	</section>
@@ -93,10 +86,10 @@
 	animation_out={'fade-out-bottom 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both'}
 	top={200}
 >
-	<section>
+	<section class="text-right">
 		<h2>work</h2>
 
-		<div class="">
+		<div class="md:max-w-[60%] ml-auto">
 			<div class="mt-12 card p-8 gap-4 justify-center items-center">
 				{#each workExperience as entry, i}
 					{#if i !== 0}
@@ -119,10 +112,10 @@
 	animation_out={'fade-out-bottom 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both'}
 	top={200}
 >
-	<section class="text-right">
+	<section class="">
 		<h2>study</h2>
 
-		<div class="mt-12 card p-8 gap-4 justify-center items-center">
+		<div class="mt-12 card p-8 gap-4 justify-center items-center md:max-w-[60%]">
 			{#each studies as entry, i}
 				{#if i !== 0}
 					<hr class="col-span-3 border-gray-700 my-6" />
@@ -144,27 +137,54 @@
 	animation={'fade-in-bottom 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both'}
 	animation_out={'fade-out-bottom 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both'}
 	top={200}
-	><section>
+>
+	<section class="text-right">
+		<h2>homelab</h2>
+
+		<div class="space-y-6 card p-8 md:max-w-[60%] ml-auto">
+			<p>
+				As a hobby, I maintain a homelab where automation and infrastructure as code play a pivotal
+				role to manage my personal servers. Ansible is my go-to tool for automation, allowing me to
+				streamline tasks and manage configurations efficiently.
+			</p>
+			<p>
+				Nix complements this setup, providing a declarative approach to system configuration and
+				package management. This combination not only enhances productivity but also ensures my
+				setup is reproducible and automated.
+			</p>
+			<p>
+				I started this hobby during the 2020 pandemic, and it has allowed me to learn lots about
+				Docker, Linux and server administration in general. I'm always eager to try new ways of
+				improve my servers and keep learning.
+			</p>
+		</div>
+	</section>
+</Saos>
+
+<Saos
+	animation={'fade-in-bottom 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both'}
+	animation_out={'fade-out-bottom 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both'}
+	top={200}
+>
+	<section>
 		<h2>technologies</h2>
 
-		<div class="space-y-6">
-			<p>Here are some of the technologies I use in my day to day!</p>
-			<p>
-				For designing websites (like this one!) or at work, I use <TechIcon name="svelte"
-					>SvelteKit</TechIcon
-				> and <TechIcon name="ts">TypeScript</TechIcon>. I specialize in fullstack development,
-				deploying applications on Azure, implementing CI/CD pipelines and containerizing apps with
-				Docker for streamlined workflows.
-			</p>
-			<p>
-				For data science and machine learning projects, my go-to is <TechIcon name="python"
-					>Python</TechIcon
-				>, which I have more than 4 years of experience with.
-			</p>
-			<p>
-				You can see the source of this website on
-				<a href="https://github.com/szethh/claraa.io" target="_blank">my GitHub</a>.
-			</p>
+		<div class="space-y-6 md:max-w-[60%] card p-8">
+			<p class="">Here are some of the technologies I use in my day to day!</p>
+			<ul class="list-disc space-y-2">
+				<li>
+					For designing websites (like this one!) or at work, I use <TechIcon name="svelte"
+						>SvelteKit</TechIcon
+					> and <TechIcon name="ts">TypeScript</TechIcon>. I specialize in fullstack development,
+					deploying applications on Azure, implementing CI/CD pipelines and containerizing apps with
+					Docker.
+				</li>
+				<li>
+					For data science and machine learning projects, my go-to is <TechIcon name="python"
+						>Python</TechIcon
+					>, which I have more than 4 years of experience with.
+				</li>
+			</ul>
 		</div>
 
 		<div class="mt-4">
@@ -181,12 +201,12 @@
 				<tbody>
 					<tr>
 						<td width="25%"><TechIcon name="svelte">SvelteKit</TechIcon></td>
-						<td><Stars stars={4} /></td>
+						<td><Stars stars={4.5} /></td>
 						<td>This is my current favorite framework, and what powers this site!</td>
 					</tr>
 					<tr>
 						<td><TechIcon name="ts">TypeScript</TechIcon></td>
-						<td><Stars stars={4} /></td>
+						<td><Stars stars={4.5} /></td>
 						<td>
 							Typescript is my go-to language for both frontend and backend development. I use it
 							alongisde SvelteKit to build my apps.
@@ -244,32 +264,11 @@
 				</tbody>
 			</table>
 		</div>
-	</section>
-</Saos>
 
-<Saos
-	animation={'fade-in-bottom 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both'}
-	animation_out={'fade-out-bottom 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both'}
-	top={200}
->
-	<section>
-		<h2>homelab</h2>
-
-		<div class="space-y-6">
-			<p>
-				As a hobby, I maintain a homelab where automation and infrastructure as code play a pivotal
-				role to manage my personal servers. Ansible is my go-to tool for automation, allowing me to
-				streamline tasks and manage configurations efficiently. Nix complements this setup,
-				providing a declarative approach to system configuration and package management. This
-				combination not only enhances productivity but also ensures my setup is reproducible and
-				automated.
-			</p>
-			<p>
-				I started this hobby during the 2020 pandemic, and it has allowed me to learn lots about
-				Docker, Linux and server administration in general. I'm always eager to try new ways of
-				improve my servers and keep learning.
-			</p>
-		</div>
+		<p>
+			You can see the source of this website on
+			<a href="https://github.com/szethh/claraa.io" target="_blank">my GitHub</a>.
+		</p>
 	</section>
 </Saos>
 
@@ -380,5 +379,10 @@
 		h3 {
 			@apply text-3xl;
 		}
+	}
+
+	ul li {
+		display: list-item;
+		margin-left: 1.5em;
 	}
 </style>
