@@ -1,40 +1,30 @@
-import { RawPostSchema, type Post } from '$lib/utils/schemas';
-import { readingTime } from 'reading-time-estimator';
 import { error } from '@sveltejs/kit';
-import { Schema } from '@effect/schema';
+import type { EntryGenerator } from './$types.js';
+import { getAllPosts } from '$lib/utils/blog.js';
+import { Effect, Record } from 'effect';
 
-// export const prerender = true;
+export const prerender = true;
 // export const csr = false;
 
-const formatReadTime = (rt: number) => {
-	if (rt < 1) return 'less than a minute';
-	if (rt > 1) return `${rt} minutes`;
-	return `${rt} minute`;
+export const entries: EntryGenerator = async () => {
+	const posts = await getAllPosts().pipe(
+		Effect.map(Record.collect((k, _) => ({ slug: k }))),
+		Effect.runPromise
+	);
+	return posts;
 };
 
-export const load = async ({ params }) => {
+export const load = async ({ params, data }) => {
 	const { slug } = params;
 
-	const pageData = await import(`$lib/content/blog/${slug}/index.svx`);
-
-	const { default: page, metadata } = Schema.decodeUnknownSync(RawPostSchema)(pageData);
+	const { default: page } = await import(`$lib/content/blog/${slug}/index.svx`);
 
 	if (!page) {
 		error(404, `Blog post not found: ${slug}`);
 	}
 
-	const raw = '$$render' in page ? page['$$render']() : '';
-	const rt = Math.ceil(readingTime(raw).minutes);
-
-	const post: Post = {
-		slug,
-		metadata,
-		readingTime: rt,
-		readingTimeText: formatReadTime(rt)
-	};
-
 	return {
-		page,
-		post
+		...data,
+		page
 	};
 };
