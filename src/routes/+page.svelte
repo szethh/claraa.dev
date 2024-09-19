@@ -86,8 +86,8 @@
 	animation_out={'fade-out-bottom 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both'}
 	top={200}
 >
-	<section class="text-right">
-		<h2>work</h2>
+	<section>
+		<h2 class="text-right">work</h2>
 
 		<div class="md:max-w-[60%] ml-auto">
 			<div class="mt-12 card p-8 gap-4 justify-center items-center">
@@ -112,7 +112,7 @@
 	animation_out={'fade-out-bottom 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both'}
 	top={200}
 >
-	<section class="">
+	<section>
 		<h2>study</h2>
 
 		<div class="mt-12 card p-8 gap-4 justify-center items-center md:max-w-[60%]">
@@ -138,24 +138,26 @@
 	animation_out={'fade-out-bottom 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both'}
 	top={200}
 >
-	<section class="text-right">
-		<h2>homelab</h2>
+	<section>
+		<h2 class="text-right">homelab</h2>
 
 		<div class="space-y-6 card p-8 md:max-w-[60%] ml-auto">
 			<p>
-				As a hobby, I maintain a homelab where automation and infrastructure as code play a pivotal
-				role to manage my personal servers. Ansible is my go-to tool for automation, allowing me to
-				streamline tasks and manage configurations efficiently.
+				As a hobby, I maintain a homelab where I self host a variety of services over multiple
+				networks and servers. Some of the services I run include a home media server with Jellyfin,
+				a home automation server with Home Assistant, and a personal git instance. You can see all
+				of them in my <a href="https://github.com/szethh/nixie" target="_blank">nix repo</a>.
 			</p>
 			<p>
-				Nix complements this setup, providing a declarative approach to system configuration and
-				package management. This combination not only enhances productivity but also ensures my
-				setup is reproducible and automated.
+				I initally used Docker for running most of the apps, as well as
+				<a href="https://github.com/szethh/infra" target="_blank">Ansible</a> for automation, but I am
+				now moving to NixOS. Now most of the services are managed by systemd instead of being in docker
+				containers, and my setup is much more reliable thanks to nix.
 			</p>
 			<p>
 				I started this hobby during the 2020 pandemic, and it has allowed me to learn lots about
 				Docker, Linux and server administration in general. I'm always eager to try new ways of
-				improve my servers and keep learning.
+				<span class="line-through">breaking</span> improving my infrastructure and keep learning :)
 			</p>
 		</div>
 	</section>
@@ -173,16 +175,20 @@
 			<p class="">Here are some of the technologies I use in my day to day!</p>
 			<ul class="list-disc space-y-2">
 				<li>
-					For designing websites (like this one!) or at work, I use <TechIcon name="svelte"
-						>SvelteKit</TechIcon
-					> and <TechIcon name="ts">TypeScript</TechIcon>. I specialize in fullstack development,
-					deploying applications on Azure, implementing CI/CD pipelines and containerizing apps with
-					Docker.
+					<p>
+						For designing websites (like this one!) or at work, I use <TechIcon name="svelte"
+							>SvelteKit</TechIcon
+						> and <TechIcon name="ts">TypeScript</TechIcon>. I specialize in fullstack development,
+						deploying applications on Azure, implementing CI/CD pipelines and containerizing apps
+						with Docker.
+					</p>
 				</li>
 				<li>
-					For data science and machine learning projects, my go-to is <TechIcon name="python"
-						>Python</TechIcon
-					>, which I have more than 4 years of experience with.
+					<p>
+						For data science and machine learning projects, my go-to is <TechIcon name="python"
+							>Python</TechIcon
+						>, which I have more than 4 years of experience with.
+					</p>
 				</li>
 			</ul>
 		</div>
@@ -300,7 +306,7 @@
 	}
 
 	p {
-		@apply my-2;
+		@apply my-2 font-light;
 	}
 
 	a {
