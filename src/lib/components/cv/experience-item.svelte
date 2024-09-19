@@ -11,17 +11,13 @@
 		let months = diff % 12;
 		if (!years && !months) months = 1;
 
-		let result = '';
-		if (years > 0) {
-			result += `${years} year`;
-			if (years > 1) result += 's';
-			result += ' & ';
-		}
-		if (months > 0) {
-			result += `${months} month`;
-			if (months > 1) result += 's';
-		}
-		return result;
+		const fmtUnit = (unit: number, name: string) => `${unit} ${unit > 1 ? `${name}s` : name}`;
+
+		let result: string[] = [];
+		if (years > 0) result.push(fmtUnit(years, 'year'));
+		if (months > 0) result.push(fmtUnit(months, 'month'));
+
+		return result.join(' & ');
 	}
 
 	const fmtDate = (date: Date) => date.toLocaleString('en-GB', { year: 'numeric', month: 'short' });
