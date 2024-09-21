@@ -1,8 +1,251 @@
 ---
 title: Multi-system NixOS deployment with Colmena
-date: 2024-08-14
+date: 2024-09-15
 description: A beginner friendly guide to deploying NixOS with Colmena
 # image: /pics/blog/test/a.jpg
 ---
 
-This is my first post! I'm still writing it, this page will update once it's done! :)
+<script lang="ts">
+    import InfoBox from '$lib/components/blog/info-box.svelte';
+</script>
+
+If you're like me and like to stay up to date in the selfhosted world, you've probably heard of NixOS,
+and how everyone seems to praise it as the end all be all of declarative deployments.
+However, it's got a pretty steep learning curve and I struggled to get started.
+Maybe this is the case for you too, so I hope by the end of this post you'll have a better understanding of how to deploy NixOS on your own servers.
+
+## The problem
+
+Not only does NixOS require a lot of knowledge to get started, but it also expects you
+to have a Linux/NixOS system available on your local device, which can be tricky if you daily drive a non-Linux machine.
+This was the case for me, most of the guides out there assumed you already had a working NixOS system
+(or at least some flavor of Linux). My main machine is a macbook, so I just couldn't run most of the guides as I could not compile certain packages.
+
+So I was looking for a way to deploy NixOS on other servers, while having the "control center" be my laptop.
+
+It was around this time that I came accross [Colmena](https://github.com/zhaofengli/colmena),
+a tool that allows you to deploy NixOS systems across multiple machines.
+It is similar to other tools like NixOps or Morph, but I liked the simplicity of it (and, frankly, the fact that it's written in Rust).
+
+## Installing Colmena
+
+First of all we need to install Colmena itself.
+Since this is a Nix tutorial, we will of course be using Nix to do so :)
+
+First, create a new file called `flake.nix` in the root of your project.
+You may also run `nix flake init` to create a template.
+Then, add the following to the file:
+
+```nix
+# flake.nix
+{
+  inputs = {
+    # or any other nixpkgs version
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+  };
+  outputs = { nixpkgs, ... }:
+    let
+      pkgsLinux = import nixpkgs { system = "x86_64-linux"; };
+      pkgsDarwin = import nixpkgs { system = "x86_64-darwin"; };
+    in
+    {
+      # nix develop
+      devShells."x86_64-darwin".default = pkgsDarwin.mkShell {
+        buildInputs = with pkgsDarwin; [
+          colmena
+        ];
+      };
+    };
+}
+```
+
+If you've never used Nix flakes before, the syntax may throw you off.
+The gist of it is that we have a set of inputs (in this case `nixpkgs`) and a set of outputs (in this case, a `devShells` attribute set).
+You may think of `devShells` as a dictionary, where the key is the system you want to build the shell for
+(in this case `x86_64-darwin`, since I run macOS), and the value is the shell itself.
+
+You can read more about Nix flakes [here](https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-flake.html).
+
+To create said shell we use the `mkShell` function from `nixpkgs`, which takes a list of packages as input.
+These packages are then installed and made available in the shell. In our case, we want to install `colmena`, so we add it to the `buildInputs` list.
+To install more packages, check out the [Nixpkgs](https://search.nixos.org/packages?type=packages&query=colmena) package search.
+
+<InfoBox icon="info" collapsible>
+    <svelte:fragment slot="title">
+        <code>Let ... in</code> syntax
+    </svelte:fragment>
+
+    <svelte:fragment slot="content">
+        <p style="margin-top: 0;">
+            Whenever you see a <code>let X in Y</code> expression, it's a way to define a set of values X in a scope Y.
+
+            In our case we are defining <code>pkgsLinux</code> and <code>pkgsDarwin</code>,
+            which are both imported from <code>nixpkgs</code> but with different systems.
+        </p>
+
+        <p style="margin-bottom: 0;">
+            This allows us to reuse those variables multiple times, without having to repeat their definition.
+        </p>
+    </svelte:fragment>
+
+</InfoBox>
+
+Verify that the flake is working by running `nix develop` in the root of your project.
+The first time you run this, it will take a while to download the appropriate Nix packages, but afterwards it should be instant.
+You will be put into a shell with `colmena` installed, which you can check by running `colmena --help`.
+
+## Adding our first server
+
+Now that we have our flake set up, we can define our first server. Let's modify our `flake.nix` file to look like this:
+
+```nix
+# flake.nix
+{
+# [...]
+  outputs = { nixpkgs, ... }:
+    let
+      pkgsLinux = import nixpkgs { system = "x86_64-linux"; };
+      pkgsDarwin = import nixpkgs { system = "x86_64-darwin"; };
+    in
+    {
+      # [...]
+
+      colmena = {
+        meta = {
+          # this sets the nixpkgs for all nodes by default
+          nixpkgs = pkgsLinux;
+
+          # this sets the nixpkgs for each node individually
+          # in case you need to use a different nixpkgs
+          # for a given node
+          #nodeNixpkgs = {
+            # nixie = pkgsLinux;
+            # sv2 = pkgsLinuxUnstable;
+          #};
+        };
+
+        # our server config!
+        nixie = {
+          deployment = {
+            targetHost = "nixie.example.com";
+            targetPort = 2222;
+            targetUser = "clara";
+            buildOnTarget = true;
+          };
+          boot.isContainer = true;
+          time.timeZone = "Europe/Amsterdam";
+        };
+
+        sv2 = {
+          # ...
+        };
+      };
+    };
+}
+```
+
+It may be a bit overwhelming at first, but it's actually quite simple.
+
+Inside the `nixie` attribute, we define the configuration for our first server.
+You don't need to name it `nixie` of course, you can name it whatever your server is called.
+This is where the magic happens, you can define any valid NixOS configuration here.
+So you can have all your servers configured in one place!
+
+<InfoBox icon="info">
+    <svelte:fragment slot="title">
+      Remember to check out the many examples online
+    </svelte:fragment>
+    <svelte:fragment slot="content">
+      Including the <a href="https://github.com/zhaofengli/colmena/blob/main/README.md#tutorial-with-flakes" target="_blank">readme of Colmena itself</a>
+    </svelte:fragment>
+</InfoBox>
+
+However, this will get cluttered pretty quickly, so we can split our configuration into multiple files.
+First we will modify our `flake.nix` to import our configuration from other files, instead of being defined in the flake:
+
+```nix
+# flake.nix
+colmena = {
+  nixie = import ./hosts/nixie;
+
+  sv2 = import ./hosts/sv2;
+};
+```
+
+And then we can have a file for each machine's configuration. You can organize them however you want, but I like to have a `hosts`
+directory with a subfolder for each node, and then a `default.nix` file in each of those folders. Like this:
+
+```
+hosts/
+├── nixie
+│   ├── default.nix
+│   └── my-package-configuration.nix
+└── sv2
+    └── default.nix
+    ...
+```
+
+The `default.nix` file holds the main configuration for each node, and we can simply import it
+with `import ./my-node` (`default.nix` is automatically implied).
+This allows us to keep our configurations modular, since you can then create smaller files and import them as needed from `default.nix`.
+
+```nix
+# hosts/nixie/default.nix
+{ config, pkgs, lib, name, ... }:
+{
+  imports = [
+    # for example, we can import a common configuration
+    # that we use across all our servers
+    ../../common/my-common-configuration.nix
+    # as well as a package specific to this node
+    ./my-package-configuration.nix
+  ];
+
+  time.timeZone = "Europe/Amsterdam";
+
+  # this will set the hostname to "nixie"
+  networking.hostName = name;
+
+  deployment = {
+    # ...
+  };
+
+  # other stuff...
+}
+```
+
+## Deployment options
+
+In order to deploy our servers, we first need to specify some settings that tell Colmena how to connect to our servers.
+This is done in the `deployment` attribute of our configuration. The most important are `targetHost`, `targetPort` and `targetUser`.
+They are quite self-explanatory, they specify the SSH host, port and user to connect to, respectively.
+
+Another important option is `buildOnTarget`, which tells Colmena whether to build the system on the target host or not.
+By default, this is set to `false`, which means that Colmena will first build the system on the
+local machine, and then transfer the results to the target host.
+
+In my case, since I am running macOS, I always set this to `true`.
+It does take a bit longer (especially on lower end hardware), but otherwise you will not be able to compile many Linux packages.
+
+Always reference the Colmena [guide](https://colmena.cli.rs/unstable/reference/) for more information on what other options are available.
+
+## Deploying
+
+Now that we have defined some servers, it's time to apply the configuration. The command to run is `colmena apply`.
+There is also a `colmena build` command, which will only build the system, but not apply it.
+These are akin to `nixos-rebuild build` and `nixos-rebuild switch` respectively.
+
+By default, Colmena will apply the configuration to all nodes, but you can specify a node with the `--on` flag.
+I'd advise to always do this, to avoid accidents ;)
+
+Here's an example of a command I'd use for one of my deploys: `colmena apply --on nixie --show-trace -v`
+
+`show-trace` is useful for debugging, and `-v` will display every log message, since by default only a few are displayed at a time.
+
+## Next steps
+
+This is a very basic tutorial, and Colmena has a lot more to offer.
+In the next post, I'll detail how to use Colmena and `sops-nix` to use secrets in your NixOS configuration.
+And, since they're encrypted, you can [keep them in git](https://github.com/szethh/nixie/blob/ce86067623a74fc86b4ba8dd4efda23df94f9b5e/secrets/secrets.yaml)!
+
+Stay tuned :)

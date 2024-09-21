@@ -2,6 +2,9 @@
 @import '@fontsource-variable/inter';
 @import '@fontsource-variable/jetbrains-mono';
 
+/* @import '/css/highlighters/prism-synthwave84.css'; */
+@import '/css/highlighters/prism-dracula.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -35,4 +38,13 @@ h4,
 h5,
 h6 {
 	@apply font-extrabold font-montserrat;
+}
+
+.blog-post {
+	@apply prose dark:prose-invert prose-img:rounded-xl prose-headings:underline prose-a:text-blue-600;
+
+	h2 {
+		@apply mb-4 mt-12;
+		@apply text-2xl;
+	}
 }

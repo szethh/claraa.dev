@@ -1,3 +1,5 @@
+import type { TechName } from './components/cv/tech';
+
 export const title = '';
 
 export type ExperienceEntry = {

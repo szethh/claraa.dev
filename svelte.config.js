@@ -1,7 +1,8 @@
 import adapter from '@sveltejs/adapter-cloudflare';
 import { sveltePreprocess } from 'svelte-preprocess';
-import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+// import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { mdsvex } from 'mdsvex';
+import rehypeExternalLinks from 'rehype-external-links';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -10,7 +11,10 @@ const config = {
 	extensions: ['.svelte', '.svx'],
 	preprocess: [
 		// vitePreprocess(),
-		mdsvex({ extensions: ['.svelte', '.svx'] }),
+		mdsvex({
+			extensions: ['.svelte', '.svx'],
+			rehypePlugins: [[rehypeExternalLinks, { target: '_blank' }]]
+		}),
 		sveltePreprocess({
 			postcss: true
 		})
