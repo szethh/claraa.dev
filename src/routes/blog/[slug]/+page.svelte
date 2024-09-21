@@ -4,12 +4,6 @@
 	export let data;
 </script>
 
-<main class="">
+<main class="md:mx-[25%]">
 	<BlogPost page={data.page} post={data.post} />
 </main>
-
-<style>
-	main {
-		margin: auto 25%;
-	}
-</style>

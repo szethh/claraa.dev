@@ -9,10 +9,14 @@
 			<a href="/blog">Blog</a>
 		</nav>
 
-		<a href="https://github.com/szethh/claraa.io" target="_blank" class="brightness-75">
-			Clara Periago @ {new Date().getFullYear()}
+		<a
+			href="https://github.com/szethh/claraa.io"
+			target="_blank"
+			class="brightness-75 max-md:text-center"
+		>
+			<span class="text-nowrap">Clara Periago</span> @ {new Date().getFullYear()}
 		</a>
 	</div>
 
-	<Socials cls="col-start-3 justify-self-end"></Socials>
+	<Socials cls="md:col-start-3 col-start-2 max-md:mt-4 justify-self-center md:justify-self-end" />
 </footer>

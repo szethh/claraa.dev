@@ -1,5 +1,5 @@
 <script>
-	import TechIcon from '$lib/components/cv/tech-icon.svelte';
+	import { TechIcon, TechEntry } from '$lib/components/cv/tech';
 	import ScrollFollower from '$lib/components/cv/animation/scroll-follower.svelte';
 	import ExperienceItem from '$lib/components/cv/experience-item.svelte';
 	import Typewriter from '$lib/components/typewriter/typewriter.svelte';
@@ -7,7 +7,6 @@
 	import { ArrowDown, ArrowUp } from 'lucide-svelte';
 
 	import Saos from 'saos';
-	import Stars from '$lib/components/cv/stars.svelte';
 	import { getScrollPercent } from '$lib/utils/ui';
 	import { fly } from 'svelte/transition';
 
@@ -93,7 +92,7 @@
 		<h2 class="text-right">work</h2>
 
 		<div class="md:max-w-[60%] ml-auto">
-			<div class="mt-12 card p-8 gap-4 justify-center items-center">
+			<div class="card p-8 gap-4 justify-center items-center">
 				{#each workExperience as entry, i}
 					{#if i !== 0}
 						<hr class="col-span-3 border-gray-700 my-6" />
@@ -118,7 +117,7 @@
 	<section>
 		<h2>study</h2>
 
-		<div class="mt-12 card p-8 gap-4 justify-center items-center md:max-w-[60%]">
+		<div class="card p-8 gap-4 justify-center items-center md:max-w-[60%]">
 			{#each studies as entry, i}
 				{#if i !== 0}
 					<hr class="col-span-3 border-gray-700 my-6" />
@@ -196,82 +195,64 @@
 			</ul>
 		</div>
 
-		<div class="mt-4">
+		<div class="mt-8">
 			<p>The full list of technologies I use:</p>
-			<table class="table-auto border-2 border-slate-500 border-collapse">
-				<thead>
-					<tr>
-						<th>Tech</th>
-						<th>Proficiency</th>
-						<th>Notes</th>
-					</tr>
-				</thead>
 
-				<tbody>
-					<tr>
-						<td width="25%"><TechIcon name="svelte">SvelteKit</TechIcon></td>
-						<td><Stars stars={4.5} /></td>
-						<td>This is my current favorite framework, and what powers this site!</td>
-					</tr>
-					<tr>
-						<td><TechIcon name="ts">TypeScript</TechIcon></td>
-						<td><Stars stars={4.5} /></td>
-						<td>
-							Typescript is my go-to language for both frontend and backend development. I use it
-							alongisde SvelteKit to build my apps.
-						</td>
-					</tr>
-					<tr>
-						<td><TechIcon name="effect">Effect</TechIcon></td>
-						<td><Stars stars={3} /></td>
-						<td>
-							I use Effect to build robust and safe web applications, allowing me to build reliable
-							and maintainable code.
-						</td>
-					</tr>
-					<tr>
-						<td><TechIcon name="python">Python</TechIcon></td>
-						<td><Stars stars={5} /></td>
-						<td>
-							I use Python for data science and machine learning projects. It's the language I have
-							most experience with.
-						</td>
-					</tr>
-					<tr>
-						<td><TechIcon name="azure">Azure / Azure DevOps</TechIcon></td>
-						<td><Stars stars={3} /></td>
-						<td>
-							At work I use Azure DevOps to manage my projects. I have experience managing Azure
-							resources and deploying applications to Azure, using Bicep and Azure Pipelines to
-							fully automate app deployments.
-						</td>
-					</tr>
-					<tr>
-						<td><TechIcon name="docker">Docker</TechIcon></td>
-						<td><Stars stars={5} /></td>
-						<td
-							>I have over 3 years of experience containerizing apps with Docker, as well as
-							deploying them with tools like Docker Compose.</td
-						>
-					</tr>
-					<tr>
-						<td><TechIcon name="ansible">Ansible</TechIcon></td>
-						<td><Stars stars={3} /></td>
-						<td
-							>For infrastructure automation, I have used Ansible for a few years. However, I am
-							currently moving away from it, towards Nix.</td
-						>
-					</tr>
-					<tr>
-						<td><TechIcon name="nix">Nix</TechIcon></td>
-						<td><Stars stars={2} /></td>
-						<td>
-							I'm currently learning Nix as a replacement for Ansible. I'm loving it so far, but I'm
-							still learning the ropes.
-						</td>
-					</tr>
-				</tbody>
-			</table>
+			<div class="card rounded p-8 md:max-w-[60%] grid md:grid-cols-1 gap-4">
+				<TechEntry name="svelte" stars={4.5}>
+					<p>This is my current favorite framework, and what powers this site!</p>
+				</TechEntry>
+
+				<TechEntry name="ts" stars={4.5}>
+					<p>
+						Typescript is my go-to language for both frontend and backend development. I use it
+						alongisde SvelteKit to build my apps.
+					</p>
+				</TechEntry>
+
+				<TechEntry name="effect" stars={3}>
+					<p>
+						I use Effect to build robust and safe web applications, allowing me to build reliable
+						and maintainable code.
+					</p>
+				</TechEntry>
+
+				<TechEntry name="python" stars={5}>
+					<p>
+						I use Python for data science and machine learning projects, as well as for most of my
+						university courses. It's the language I have most experience with.
+					</p>
+				</TechEntry>
+
+				<TechEntry name="azure" stars={3}>
+					<p>
+						At work I use Azure DevOps to manage my projects. I have experience managing Azure
+						resources and deploying applications to Azure, using Bicep and Azure Pipelines to fully
+						automate app deployments.
+					</p>
+				</TechEntry>
+
+				<TechEntry name="docker" stars={5}>
+					<p>
+						I have over 4 years of experience containerizing apps with Docker, as well as deploying
+						them with tools like Docker Compose.
+					</p>
+				</TechEntry>
+
+				<TechEntry name="ansible" stars={3}>
+					<p>
+						For infrastructure automation, I have used Ansible for a few years. However, I am
+						currently moving away from it, towards Nix.
+					</p>
+				</TechEntry>
+
+				<TechEntry name="nix" stars={2}>
+					<p>
+						I'm currently learning Nix as a replacement for Ansible. I'm loving it so far, but I'm
+						still learning the ropes.
+					</p>
+				</TechEntry>
+			</div>
 		</div>
 
 		<p>
@@ -305,7 +286,7 @@
 
 <style lang="postcss">
 	h2 {
-		@apply mb-8;
+		@apply md:mb-8 mb-4;
 	}
 
 	p {
@@ -343,27 +324,6 @@
 		}
 	}
 
-	thead > tr > th {
-		@apply bg-zinc-800 border-t-2 border-slate-600;
-	}
-
-	tr > td {
-		@apply border-t-2 border-slate-600 bg-neutral-800;
-	}
-
-	tr > td:nth-child(2) {
-		@apply px-0;
-	}
-
-	tr > td:nth-child(3) {
-		@apply px-20;
-	}
-
-	tr > td,
-	th {
-		@apply p-4;
-	}
-
 	/* GENERAL ATTRIBUTES */
 
 	h1 {
@@ -376,7 +336,7 @@
 
 	@media (max-width: 640px) {
 		h2 {
-			@apply text-5xl;
+			@apply text-4xl;
 		}
 	}
 

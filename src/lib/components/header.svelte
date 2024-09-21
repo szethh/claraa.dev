@@ -33,8 +33,8 @@
 	);
 </script>
 
-<div class="flex justify-between items-center py-8 px-12 bg-stone-800">
-	<nav class="flex gap-10">
+<div class="flex justify-between items-center py-8 md:px-12 px-8 gap-4 bg-stone-800">
+	<nav class="flex gap-10 w-full overflow-hidden">
 		<a href="/" class="flex gap-2 items-center">
 			<!-- <Home /> -->
 			<b class:underline={$where === 'home'}>Me</b>
@@ -47,7 +47,9 @@
 			</a>
 			{#if $blogPost.title && $blogPost.slug}
 				<span class="text-zinc-400">/</span>
-				<a href="/blog/{$blogPost.slug}" class="text-zinc-400">{$blogPost.title}</a>
+				<a href="/blog/{$blogPost.slug}" class="text-zinc-400 max-w-full truncate">
+					{$blogPost.title}
+				</a>
 			{/if}
 		</div>
 	</nav>
