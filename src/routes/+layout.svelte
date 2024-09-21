@@ -6,7 +6,12 @@
 </script>
 
 <svelte:head>
-	<script defer data-domain="claraa.io" src="https://analytics.bnuuy.net/js/index.js"></script>
+	<script
+		defer
+		data-domain="claraa.io"
+		data-api="https://ps.szeth.workers.dev/ps/api/event"
+		src="https://ps.szeth.workers.dev/ps/js/index.js"
+	></script>
 </svelte:head>
 
 <!-- grid grid-rows-[auto_1fr_auto] -->
