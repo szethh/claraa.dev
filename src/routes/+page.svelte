@@ -8,20 +8,23 @@
 
 	import Saos from 'saos';
 	import Stars from '$lib/components/cv/stars.svelte';
+	import { getScrollPercent } from '$lib/utils/ui';
+	import { fly } from 'svelte/transition';
 
-	let scrollY = 0;
+	let scrollPerc = 0;
 
 	function handleScroll() {
-		scrollY = window.scrollY;
+		scrollPerc = getScrollPercent(document);
 	}
 </script>
 
 <svelte:window on:scroll={handleScroll} />
 
-{#if scrollY > 400}
+{#if scrollPerc > 10 && scrollPerc < 95}
 	<button
 		on:click={() => document.body.scrollIntoView({ behavior: 'smooth' })}
 		class="fixed bottom-[5%] z-50 right-[5%] card !bg-slate-700 p-4 rounded-full group hover:brightness-105 flex items-center gap-1"
+		transition:fly
 	>
 		<ArrowUp />
 		<span class="group-hover:block hidden transition-opacity duration-300">Back to top</span>

@@ -2,6 +2,7 @@
 	import { page } from '$app/stores';
 	import { Array, Order, Option, pipe } from 'effect';
 	import { derived } from 'svelte/store';
+	import Socials from './helpers/socials.svelte';
 
 	const blogPost = derived(page, ($page) => ({
 		title: $page.data.post?.metadata?.title,
@@ -32,23 +33,27 @@
 	);
 </script>
 
-<nav class="flex gap-10 py-8 px-12 bg-stone-800">
-	<a href="/" class="flex gap-2 items-center">
-		<!-- <Home /> -->
-		<b class:underline={$where === 'home'}>Me</b>
-	</a>
-
-	<div class="flex gap-4">
-		<a href="/blog" class="flex gap-2 items-center">
-			<!-- <Notebook /> -->
-			<span class:underline={$where === 'blog'}>Blog</span>
+<div class="flex justify-between items-center py-8 px-12 bg-stone-800">
+	<nav class="flex gap-10">
+		<a href="/" class="flex gap-2 items-center">
+			<!-- <Home /> -->
+			<b class:underline={$where === 'home'}>Me</b>
 		</a>
-		{#if $blogPost.title && $blogPost.slug}
-			<span class="text-zinc-400">/</span>
-			<a href="/blog/{$blogPost.slug}" class="text-zinc-400">{$blogPost.title}</a>
-		{/if}
-	</div>
-</nav>
+
+		<div class="flex gap-4">
+			<a href="/blog" class="flex gap-2 items-center">
+				<!-- <Notebook /> -->
+				<span class:underline={$where === 'blog'}>Blog</span>
+			</a>
+			{#if $blogPost.title && $blogPost.slug}
+				<span class="text-zinc-400">/</span>
+				<a href="/blog/{$blogPost.slug}" class="text-zinc-400">{$blogPost.title}</a>
+			{/if}
+		</div>
+	</nav>
+
+	<Socials />
+</div>
 
 <style>
 	a {

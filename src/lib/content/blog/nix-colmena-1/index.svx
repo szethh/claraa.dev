@@ -156,7 +156,7 @@ So you can have all your servers configured in one place!
       Remember to check out the many examples online
     </svelte:fragment>
     <svelte:fragment slot="content">
-      Including the <a href="https://github.com/zhaofengli/colmena/blob/main/README.md#tutorial-with-flakes ">readme of Colmena itself</a>
+      Including the <a href="https://github.com/zhaofengli/colmena/blob/main/README.md#tutorial-with-flakes" target="_blank">readme of Colmena itself</a>
     </svelte:fragment>
 </InfoBox>
 
