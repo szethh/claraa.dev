@@ -5,6 +5,10 @@
 	import Header from '$lib/components/header.svelte';
 </script>
 
+<!-- 
+	to avoid adblockers blocking the analytics, we use Cloudflare workers to proxy the requests
+	https://plausible.io/docs/proxy/guides/cloudflare
+-->
 <svelte:head>
 	<script
 		defer

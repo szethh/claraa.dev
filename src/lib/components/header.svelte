@@ -17,6 +17,12 @@
 		{
 			route: '/blog',
 			label: 'blog'
+		},
+		// this one prevents the blog from being underlined
+		// if we are looking at a post, but not the index
+		{
+			route: '/blog/',
+			label: 'blog-post'
 		}
 	] as const;
 

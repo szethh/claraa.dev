@@ -8,6 +8,10 @@
 	);
 </script>
 
+<svelte:head>
+	<title>Blog - Clara Periago</title>
+</svelte:head>
+
 <div class="flex flex-col gap-4">
 	{#each posts as [slug, post]}
 		<a href="/blog/{slug}">

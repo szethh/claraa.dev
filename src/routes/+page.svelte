@@ -19,6 +19,10 @@
 
 <svelte:window on:scroll={handleScroll} />
 
+<svelte:head>
+	<title>Clara Periago</title>
+</svelte:head>
+
 {#if scrollPerc > 10 && scrollPerc < 95}
 	<button
 		on:click={() => document.body.scrollIntoView({ behavior: 'smooth' })}
