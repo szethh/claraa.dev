@@ -16,4 +16,8 @@
 	<a href="https://linkedin.com/in/clara-periago" target="_blank" class="text-zinc-400">
 		<SiIcon name="LinkedIn" />
 	</a>
+
+	<a href="/blog/feed.rss" target="_blank" class="text-zinc-400">
+		<SiIcon name="Rss" />
+	</a>
 </div>

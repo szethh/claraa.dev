@@ -1,10 +1,11 @@
 <script lang="ts">
-	import { siMastodon, siGithub, siLinkedin, type SimpleIcon } from 'simple-icons';
+	import { siMastodon, siGithub, siLinkedin, siRss, type SimpleIcon } from 'simple-icons';
 
 	const icons = {
 		Mastodon: siMastodon,
 		Github: siGithub,
-		LinkedIn: siLinkedin
+		LinkedIn: siLinkedin,
+		Rss: siRss
 	} as const satisfies Record<string, SimpleIcon>;
 
 	export let name: keyof typeof icons;
