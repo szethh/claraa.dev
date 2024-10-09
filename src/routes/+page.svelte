@@ -3,7 +3,7 @@
 	import ScrollFollower from '$lib/components/cv/animation/scroll-follower.svelte';
 	import ExperienceItem from '$lib/components/cv/experience-item.svelte';
 	import Typewriter from '$lib/components/typewriter/typewriter.svelte';
-	import { EMAIL_ADDRESS, studies, workExperience } from '$lib/config';
+	import { EMAIL, REPO, studies, workExperience } from '$lib/config';
 	import { ArrowDown, ArrowUp } from 'lucide-svelte';
 
 	import Saos from 'saos';
@@ -261,7 +261,7 @@
 
 		<p>
 			You can see the source of this website on
-			<a href="https://github.com/szethh/claraa.io" target="_blank">my GitHub</a>.
+			<a href="https://github.com/szethh/{REPO}" target="_blank">my GitHub</a>.
 		</p>
 	</section>
 </Saos>
@@ -277,9 +277,7 @@
 		<p>want to contact me?</p>
 		<p>
 			send an email to
-			<a href="mailto:{EMAIL_ADDRESS}" target="_blank"
-				><code class="text-cyan-400">{EMAIL_ADDRESS}</code></a
-			>
+			<a href="mailto:{EMAIL}" target="_blank"><code class="text-cyan-400">{EMAIL}</code></a>
 		</p>
 
 		<p>

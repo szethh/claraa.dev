@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { DOMAIN } from '$lib/config';
 	import Socials from './helpers/socials.svelte';
 </script>
 
@@ -10,7 +11,7 @@
 		</nav>
 
 		<a
-			href="https://github.com/szethh/claraa.io"
+			href="https://github.com/szethh/{DOMAIN}"
 			target="_blank"
 			class="brightness-75 max-md:text-center"
 		>

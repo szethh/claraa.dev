@@ -1,13 +1,12 @@
 import { Feed, type Author } from 'feed';
 import { getAllPosts } from './blog';
 import { Array, Effect, Order, pipe, Record } from 'effect';
-
-const publicUrl = 'https://claraa.io';
+import { BASE_URL, EMAIL } from '$lib/config';
 
 const me = {
 	name: 'Clara Periago',
-	email: 'info@claraa.io',
-	link: publicUrl
+	email: EMAIL,
+	link: BASE_URL
 } satisfies Author;
 
 const favicon = 'https://fav.farm/🌺';
@@ -19,16 +18,16 @@ export const genFeed = Effect.gen(function* () {
 	const feed = new Feed({
 		title: "Clara's Blog",
 		description: 'Selfhosting, NixOs, DevOps, and more',
-		id: publicUrl,
-		link: publicUrl,
+		id: BASE_URL,
+		link: BASE_URL,
 		language: 'en', // optional, used only in RSS 2.0, possible values: http://www.w3.org/TR/REC-html40/struct/dirlang.html#langcodes
 		image: favicon,
 		favicon,
 		copyright: 'All rights reserved 2024, Clara Periago',
 		updated: new Date(),
 		feedLinks: {
-			atom: `${publicUrl}/blog/atom.xml`,
-			rss: `${publicUrl}/blog/feed.rss`
+			atom: `${BASE_URL}/blog/atom.xml`,
+			rss: `${BASE_URL}/blog/feed.rss`
 		},
 		author: me
 	});
@@ -47,8 +46,8 @@ export const genFeed = Effect.gen(function* () {
 	Array.forEach(postsArr, ({ slug, post }) =>
 		feed.addItem({
 			title: post.title,
-			id: `${publicUrl}/blog/${slug}`,
-			link: `${publicUrl}/blog/${slug}`,
+			id: `${BASE_URL}/blog/${slug}`,
+			link: `${BASE_URL}/blog/${slug}`,
 			description: post.description,
 			// content: '',
 			author: [me],

@@ -3,6 +3,8 @@
 
 	import Footer from '$lib/components/footer.svelte';
 	import Header from '$lib/components/header.svelte';
+
+	import { DOMAIN } from '$lib/config';
 </script>
 
 <!-- 
@@ -12,7 +14,7 @@
 <svelte:head>
 	<script
 		defer
-		data-domain="claraa.io"
+		data-domain={DOMAIN}
 		data-api="https://ps.szeth.workers.dev/ps/api/event"
 		src="https://ps.szeth.workers.dev/ps/js/index.js"
 	></script>
