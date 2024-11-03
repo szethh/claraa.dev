@@ -3,7 +3,7 @@
 	import { onMount } from 'svelte';
 	import { Sun, Moon } from 'lucide-svelte';
 
-	let darkMode = true;
+	let darkMode = $state(true);
 
 	onMount(() => {
 		darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -18,7 +18,7 @@
 </script>
 
 <div>
-	<button on:click={() => (darkMode = !darkMode)}>
+	<button onclick={() => (darkMode = !darkMode)}>
 		{#if darkMode}
 			<Moon />
 		{:else}

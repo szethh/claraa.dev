@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { fmtDate } from '$lib/utils/blog.js';
 
-	export let data;
+	let { data } = $props();
 
 	const posts = Object.entries(data.posts).sort(
 		(a, b) => new Date(b[1].date).getTime() - new Date(a[1].date).getTime()
@@ -23,9 +23,9 @@
 				<div>
 					<h1>{post.title}</h1>
 
-					<p class="text-zinc-400 text-sm">{fmtDate(post.date)}</p>
+					<div class="text-zinc-400 text-sm">{fmtDate(post.date)}</div>
 
-					<p class="mt-4 text-zinc-300">{post.description}</p>
+					<div class="mt-4 text-zinc-300">{post.description}</div>
 				</div>
 			</div>
 		</a>

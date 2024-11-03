@@ -1,7 +1,11 @@
 <script lang="ts">
 	import SiIcon from './si-icon.svelte';
 
-	export let cls = '';
+	interface Props {
+		cls?: string;
+	}
+
+	let { cls = '' }: Props = $props();
 </script>
 
 <div class="flex gap-4 {cls}">

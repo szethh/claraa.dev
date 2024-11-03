@@ -10,14 +10,14 @@
 	import { getScrollPercent } from '$lib/utils/ui';
 	import { fly } from 'svelte/transition';
 
-	let scrollPerc = 0;
+	let scrollPerc = $state(0);
 
 	function handleScroll() {
 		scrollPerc = getScrollPercent(document);
 	}
 </script>
 
-<svelte:window on:scroll={handleScroll} />
+<svelte:window onscroll={handleScroll} />
 
 <svelte:head>
 	<title>Clara Periago</title>
@@ -25,7 +25,7 @@
 
 {#if scrollPerc > 10 && scrollPerc < 95}
 	<button
-		on:click={() => document.body.scrollIntoView({ behavior: 'smooth' })}
+		onclick={() => document.body.scrollIntoView({ behavior: 'smooth' })}
 		class="fixed bottom-[5%] z-50 right-[5%] card !bg-slate-700 p-4 rounded-full group hover:brightness-105 flex items-center gap-1"
 		transition:fly
 	>
@@ -71,18 +71,18 @@
 		<h2>about me</h2>
 
 		<div class="!space-y-8 text-xl font-light md:max-w-[60%] card p-8">
-			<p>
+			<div>
 				👋 Hello there! I'm Clara Periago, a web developer from Spain 🇪🇸, currently based in
 				Nijmegen, The Netherlands 🇳🇱.
-			</p>
-			<p>
+			</div>
+			<div>
 				💻 I specialize in fullstack development with SvelteKit and TypeScript. I also have
 				experience building and deploying artificial intelligence models with Python.
-			</p>
-			<p>
+			</div>
+			<div>
 				📖 Currently, I am pursuing a Bachelor in Artificial Intelligence at Radboud University,
 				where I am combining both technical AI development with neuroscience and psychology.
-			</p>
+			</div>
 		</div>
 	</section>
 </Saos>
@@ -104,9 +104,9 @@
 
 					<ExperienceItem {entry} />
 
-					<p class="my-4">
+					<div class="my-4">
 						{entry.description}
-					</p>
+					</div>
 				{/each}
 			</div>
 		</div>
@@ -131,9 +131,9 @@
 					<ExperienceItem {entry} />
 				</div>
 
-				<p class="my-4">
+				<div class="my-4">
 					{entry.description}
-				</p>
+				</div>
 			{/each}
 		</div>
 	</section>
@@ -148,23 +148,23 @@
 		<h2 class="text-right">homelab</h2>
 
 		<div class="space-y-6 card p-8 md:max-w-[60%] ml-auto">
-			<p>
+			<div>
 				As a hobby, I maintain a homelab where I self host a variety of services over multiple
 				networks and servers. Some of the services I run include a home media server with Jellyfin,
 				a home automation server with Home Assistant, and a personal git instance. You can see all
 				of them in my <a href="https://github.com/szethh/nixie" target="_blank">nix repo</a>.
-			</p>
-			<p>
+			</div>
+			<div>
 				I initally used Docker for running most of the apps, as well as
 				<a href="https://github.com/szethh/infra" target="_blank">Ansible</a> for automation, but I am
 				now moving to NixOS. Now most of the services are managed by systemd instead of being in docker
 				containers, and my setup is much more reliable thanks to nix.
-			</p>
-			<p>
+			</div>
+			<div>
 				I started this hobby during the 2020 pandemic, and it has allowed me to learn lots about
 				Docker, Linux and server administration in general. I'm always eager to try new ways of
 				<span class="line-through">breaking</span> improving my infrastructure and keep learning :)
-			</p>
+			</div>
 		</div>
 	</section>
 </Saos>
@@ -178,91 +178,77 @@
 		<h2>technologies</h2>
 
 		<div class="space-y-6 md:max-w-[60%] card p-8">
-			<p class="">Here are some of the technologies I use in my day to day!</p>
+			<div class="">Here are some of the technologies I use in my day to day!</div>
 			<ul class="list-disc space-y-2">
 				<li>
-					<p>
+					<div>
 						For designing websites (like this one!) or at work, I use <TechIcon name="svelte"
 							>SvelteKit</TechIcon
 						> and <TechIcon name="ts">TypeScript</TechIcon>. I specialize in fullstack development,
 						deploying applications on Azure, implementing CI/CD pipelines and containerizing apps
 						with Docker.
-					</p>
+					</div>
 				</li>
 				<li>
-					<p>
+					<div>
 						For data science and machine learning projects, my go-to is <TechIcon name="python"
 							>Python</TechIcon
 						>, which I have more than 4 years of experience with.
-					</p>
+					</div>
 				</li>
 			</ul>
 		</div>
 
 		<div class="mt-8">
-			<p>The full list of technologies I use:</p>
+			<div>The full list of technologies I use:</div>
 
 			<div class="card rounded p-8 md:max-w-[60%] grid md:grid-cols-1 gap-4">
 				<TechEntry name="svelte" stars={4.5}>
-					<p>This is my current favorite framework, and what powers this site!</p>
+					This is my current favorite framework, and what powers this site!
 				</TechEntry>
 
 				<TechEntry name="ts" stars={4.5}>
-					<p>
-						Typescript is my go-to language for both frontend and backend development. I use it
-						alongisde SvelteKit to build my apps.
-					</p>
+					Typescript is my go-to language for both frontend and backend development. I use it
+					alongisde SvelteKit to build my apps.
 				</TechEntry>
 
 				<TechEntry name="effect" stars={3}>
-					<p>
-						I use Effect to build robust and safe web applications, allowing me to build reliable
-						and maintainable code.
-					</p>
+					I use Effect to build robust and safe web applications, allowing me to build reliable and
+					maintainable code.
 				</TechEntry>
 
 				<TechEntry name="python" stars={5}>
-					<p>
-						I use Python for data science and machine learning projects, as well as for most of my
-						university courses. It's the language I have most experience with.
-					</p>
+					I use Python for data science and machine learning projects, as well as for most of my
+					university courses. It's the language I have most experience with.
 				</TechEntry>
 
 				<TechEntry name="azure" stars={3}>
-					<p>
-						At work I use Azure DevOps to manage my projects. I have experience managing Azure
-						resources and deploying applications to Azure, using Bicep and Azure Pipelines to fully
-						automate app deployments.
-					</p>
+					At work I use Azure DevOps to manage my projects. I have experience managing Azure
+					resources and deploying applications to Azure, using Bicep and Azure Pipelines to fully
+					automate app deployments.
 				</TechEntry>
 
 				<TechEntry name="docker" stars={5}>
-					<p>
-						I have over 4 years of experience containerizing apps with Docker, as well as deploying
-						them with tools like Docker Compose.
-					</p>
+					I have over 4 years of experience containerizing apps with Docker, as well as deploying
+					them with tools like Docker Compose.
 				</TechEntry>
 
 				<TechEntry name="ansible" stars={3}>
-					<p>
-						For infrastructure automation, I have used Ansible for a few years. However, I am
-						currently moving away from it, towards Nix.
-					</p>
+					For infrastructure automation, I have used Ansible for a few years. However, I am
+					currently moving away from it, towards Nix.
 				</TechEntry>
 
 				<TechEntry name="nix" stars={2}>
-					<p>
-						I'm currently learning Nix as a replacement for Ansible. I'm loving it so far, but I'm
-						still learning the ropes.
-					</p>
+					I'm currently learning Nix as a replacement for Ansible. I'm loving it so far, but I'm
+					still learning the ropes.
 				</TechEntry>
 			</div>
 		</div>
 
-		<p>
+		<div>
 			You can see the source of this website on
 			<a href="https://github.com/szethh/{REPO}" target="_blank">my GitHub</a>.
-		</p>
+		</div>
 	</section>
 </Saos>
 
@@ -274,15 +260,15 @@
 	<section class="text-center">
 		<h2>contact</h2>
 
-		<p>want to contact me?</p>
-		<p>
+		<div>want to contact me?</div>
+		<div>
 			send an email to
 			<a href="mailto:{EMAIL}" target="_blank"><code class="text-cyan-400">{EMAIL}</code></a>
-		</p>
+		</div>
 
-		<p>
+		<div>
 			you can also find me on <TechIcon name="linkedin" cls="!text-cyan-400">LinkedIn</TechIcon>.
-		</p>
+		</div>
 	</section>
 </Saos>
 

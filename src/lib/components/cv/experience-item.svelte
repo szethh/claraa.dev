@@ -1,7 +1,11 @@
 <script lang="ts">
 	import type { ExperienceEntry } from '$lib/config';
 
-	export let entry: ExperienceEntry;
+	interface Props {
+		entry: ExperienceEntry;
+	}
+
+	let { entry }: Props = $props();
 
 	function monthDiff(date1: Date, date2: Date) {
 		const diff =

@@ -2,9 +2,15 @@
 	import TechIcon from './tech-icon.svelte';
 	import Stars from './stars.svelte';
 	import { technologies, type TechName } from '.';
+	import type { Snippet } from 'svelte';
 
-	export let name: TechName;
-	export let stars: number;
+	interface Props {
+		name: TechName;
+		stars: number;
+		children: Snippet;
+	}
+
+	let { name, stars, children }: Props = $props();
 
 	const tech = technologies[name];
 </script>
@@ -18,5 +24,5 @@
 	</div>
 	<hr class="mt-2 border-slate-600" />
 
-	<slot />
+	{@render children()}
 </div>

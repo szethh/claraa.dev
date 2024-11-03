@@ -1,10 +1,14 @@
 <script lang="ts">
-	export let stars = 0;
 
-	export let strokeColor = 'white';
-	export let fillColor = 'currentColor';
+	interface Props {
+		stars?: number;
+		strokeColor?: string;
+		fillColor?: string;
+	}
 
-	$: remainder = ((stars - Math.floor(stars)) * 100).toPrecision(2);
+	let { stars = 0, strokeColor = 'white', fillColor = 'currentColor' }: Props = $props();
+
+	let remainder = $derived(((stars - Math.floor(stars)) * 100).toPrecision(2));
 </script>
 
 <!-- FIXME: this doesn't work in safari -->

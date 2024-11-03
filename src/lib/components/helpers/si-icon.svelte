@@ -8,8 +8,12 @@
 		Rss: siRss
 	} as const satisfies Record<string, SimpleIcon>;
 
-	export let name: keyof typeof icons;
-	export let cls = '';
+	interface Props {
+		name: keyof typeof icons;
+		cls?: string;
+	}
+
+	let { name, cls = '' }: Props = $props();
 
 	const icon = icons[name];
 </script>

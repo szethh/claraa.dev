@@ -1,8 +1,14 @@
 <script lang="ts">
+	import type { Snippet } from 'svelte';
 	import { type Tech, type TechName, technologies } from '.';
 
-	export let name: TechName;
-	export let cls = '';
+	interface Props {
+		name: TechName;
+		cls?: string;
+		children?: Snippet;
+	}
+
+	let { name, cls = '', children }: Props = $props();
 
 	const tech: Tech = technologies[name];
 </script>
@@ -16,5 +22,7 @@
 		/>
 	{/if}
 
-	<span class="{cls} {tech.color} hover:underline whitespace-nowrap"><slot>{tech.name}</slot></span>
+	<span class="{cls} {tech.color} hover:underline whitespace-nowrap"
+		>{#if children}{@render children()}{:else}{tech.name}{/if}</span
+	>
 </a>
