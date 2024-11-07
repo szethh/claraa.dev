@@ -1,17 +1,26 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, type Snippet } from 'svelte';
 
-	export let top = 100;
+	interface Props {
+		top?: number;
+		children: Snippet;
+	}
 
-	let elem: HTMLDivElement;
+	let { top = 100, children }: Props = $props();
+
+	let elem = $state<HTMLDivElement>();
 	let stickyOffset: number;
 
 	onMount(() => {
-		stickyOffset = elem.offsetTop;
+		if (elem) {
+			stickyOffset = elem.offsetTop;
+		}
 	});
 
 	function handleScroll() {
 		const y = window.scrollY;
+
+		if (!elem) return;
 
 		if (y >= stickyOffset - top) {
 			const dist = (stickyOffset - y) / stickyOffset;
@@ -22,11 +31,8 @@
 	}
 </script>
 
-<svelte:window on:scroll={handleScroll} />
+<svelte:window onscroll={handleScroll} />
 
 <div bind:this={elem}>
-	<slot />
+	{@render children()}
 </div>
-
-<style>
-</style>

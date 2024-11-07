@@ -6,18 +6,18 @@
 	import { EMAIL, REPO, studies, workExperience } from '$lib/config';
 	import { ArrowDown, ArrowUp } from 'lucide-svelte';
 
-	import Saos from 'saos';
+	import Saos from '$lib/components/saos.svelte';
 	import { getScrollPercent } from '$lib/utils/ui';
 	import { fly } from 'svelte/transition';
 
-	let scrollPerc = 0;
+	let scrollPerc = $state(0);
 
 	function handleScroll() {
 		scrollPerc = getScrollPercent(document);
 	}
 </script>
 
-<svelte:window on:scroll={handleScroll} />
+<svelte:window onscroll={handleScroll} />
 
 <svelte:head>
 	<title>Clara Periago</title>
@@ -25,7 +25,7 @@
 
 {#if scrollPerc > 10 && scrollPerc < 95}
 	<button
-		on:click={() => document.body.scrollIntoView({ behavior: 'smooth' })}
+		onclick={() => document.body.scrollIntoView({ behavior: 'smooth' })}
 		class="fixed bottom-[5%] z-50 right-[5%] card !bg-slate-700 p-4 rounded-full group hover:brightness-105 flex items-center gap-1"
 		transition:fly
 	>
@@ -204,57 +204,43 @@
 
 			<div class="card rounded p-8 md:max-w-[60%] grid md:grid-cols-1 gap-4">
 				<TechEntry name="svelte" stars={4.5}>
-					<p>This is my current favorite framework, and what powers this site!</p>
+					This is my current favorite framework, and what powers this site!
 				</TechEntry>
 
 				<TechEntry name="ts" stars={4.5}>
-					<p>
-						Typescript is my go-to language for both frontend and backend development. I use it
-						alongisde SvelteKit to build my apps.
-					</p>
+					Typescript is my go-to language for both frontend and backend development. I use it
+					alongisde SvelteKit to build my apps.
 				</TechEntry>
 
 				<TechEntry name="effect" stars={3}>
-					<p>
-						I use Effect to build robust and safe web applications, allowing me to build reliable
-						and maintainable code.
-					</p>
+					I use Effect to build robust and safe web applications, allowing me to build reliable and
+					maintainable code.
 				</TechEntry>
 
 				<TechEntry name="python" stars={5}>
-					<p>
-						I use Python for data science and machine learning projects, as well as for most of my
-						university courses. It's the language I have most experience with.
-					</p>
+					I use Python for data science and machine learning projects, as well as for most of my
+					university courses. It's the language I have most experience with.
 				</TechEntry>
 
 				<TechEntry name="azure" stars={3}>
-					<p>
-						At work I use Azure DevOps to manage my projects. I have experience managing Azure
-						resources and deploying applications to Azure, using Bicep and Azure Pipelines to fully
-						automate app deployments.
-					</p>
+					At work I use Azure DevOps to manage my projects. I have experience managing Azure
+					resources and deploying applications to Azure, using Bicep and Azure Pipelines to fully
+					automate app deployments.
 				</TechEntry>
 
 				<TechEntry name="docker" stars={5}>
-					<p>
-						I have over 4 years of experience containerizing apps with Docker, as well as deploying
-						them with tools like Docker Compose.
-					</p>
+					I have over 4 years of experience containerizing apps with Docker, as well as deploying
+					them with tools like Docker Compose.
 				</TechEntry>
 
 				<TechEntry name="ansible" stars={3}>
-					<p>
-						For infrastructure automation, I have used Ansible for a few years. However, I am
-						currently moving away from it, towards Nix.
-					</p>
+					For infrastructure automation, I have used Ansible for a few years. However, I am
+					currently moving away from it, towards Nix.
 				</TechEntry>
 
 				<TechEntry name="nix" stars={2}>
-					<p>
-						I'm currently learning Nix as a replacement for Ansible. I'm loving it so far, but I'm
-						still learning the ropes.
-					</p>
+					I'm currently learning Nix as a replacement for Ansible. I'm loving it so far, but I'm
+					still learning the ropes.
 				</TechEntry>
 			</div>
 		</div>

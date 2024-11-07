@@ -11,6 +11,7 @@ export const entries: EntryGenerator = async () => {
 		Effect.map(Record.collect((k, _) => ({ slug: k }))),
 		Effect.runPromise
 	);
+	console.log(posts);
 	return posts;
 };
 

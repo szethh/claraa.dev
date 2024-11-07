@@ -1,10 +1,17 @@
-<script>
+<script lang="ts">
 	import '../app.postcss';
 
 	import Footer from '$lib/components/footer.svelte';
 	import Header from '$lib/components/header.svelte';
 
 	import { DOMAIN } from '$lib/config';
+	import type { Snippet } from 'svelte';
+
+	interface Props {
+		children: Snippet;
+	}
+
+	let { children }: Props = $props();
 </script>
 
 <!-- 
@@ -26,7 +33,7 @@
 	<Header />
 
 	<main class="flex-grow mx-4 p-6">
-		<slot />
+		{@render children()}
 	</main>
 
 	<Footer />

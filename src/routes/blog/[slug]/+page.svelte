@@ -1,7 +1,7 @@
 <script lang="ts">
 	import BlogPost from '$lib/components/blog/blog-post.svelte';
 
-	export let data;
+	let { data } = $props();
 </script>
 
 <main class="md:mx-[25%]">

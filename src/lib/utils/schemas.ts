@@ -1,5 +1,5 @@
 import { Schema } from '@effect/schema';
-import type { SvelteComponent } from 'svelte';
+import type { Component } from 'svelte';
 
 const RequiredMetadata = Schema.Struct({
 	title: Schema.String,
@@ -14,20 +14,18 @@ export const PostMetadataSchema = Schema.extend(RequiredMetadata, ExtraMetadata)
 
 export type PostMetadata = Schema.Schema.Type<typeof PostMetadataSchema>;
 
-const SvelteComponentSchema = Schema.declare(
-	(input: unknown): input is typeof SvelteComponent & { $$render: () => string } => {
-		// return true;
-		// unfortunately we can't check for $$render here
-		// since svelte components are different depending on
-		// whether they are imported in the browser or server
-		return (
-			typeof input === 'object' &&
-			input !== null &&
-			'$$render' in input &&
-			typeof input['$$render'] === 'function'
-		);
-	}
-);
+const SvelteComponentSchema = Schema.declare((input: unknown): input is Component => {
+	// return true;
+	// unfortunately we can't check for $$render here
+	// since svelte components are different depending on
+	// whether they are imported in the browser or server
+	// console.log(input());
+	return (
+		typeof input === 'function' && input !== null
+		// && 'render' in input &&
+		// typeof input['render'] === 'function'
+	);
+});
 
 export const RawPostSchema = Schema.Struct({
 	metadata: PostMetadataSchema,

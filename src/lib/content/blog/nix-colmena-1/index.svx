@@ -71,22 +71,22 @@ These packages are then installed and made available in the shell. In our case, 
 To install more packages, check out the [Nixpkgs](https://search.nixos.org/packages?type=packages&query=colmena) package search.
 
 <InfoBox icon="info" collapsible>
-    <svelte:fragment slot="title">
+    {#snippet title()}
         <code>Let ... in</code> syntax
-    </svelte:fragment>
+    {/snippet}
 
-    <svelte:fragment slot="content">
-        <p style="margin-top: 0;">
+    {#snippet content()}
+        <div style="margin-top: 0;">
             Whenever you see a <code>let X in Y</code> expression, it's a way to define a set of values X in a scope Y.
 
             In our case we are defining <code>pkgsLinux</code> and <code>pkgsDarwin</code>,
             which are both imported from <code>nixpkgs</code> but with different systems.
-        </p>
+        </div>
 
-        <p style="margin-bottom: 0;">
+        <div style="margin-bottom: 0;">
             This allows us to reuse those variables multiple times, without having to repeat their definition.
-        </p>
-    </svelte:fragment>
+        </div>
+    {/snippet}
 
 </InfoBox>
 
@@ -152,12 +152,12 @@ This is where the magic happens, you can define any valid NixOS configuration he
 So you can have all your servers configured in one place!
 
 <InfoBox icon="info">
-    <svelte:fragment slot="title">
+    {#snippet title()}
       Remember to check out the many examples online
-    </svelte:fragment>
-    <svelte:fragment slot="content">
+    {/snippet}
+    {#snippet content()}
       Including the <a href="https://github.com/zhaofengli/colmena/blob/main/README.md#tutorial-with-flakes" target="_blank">readme of Colmena itself</a>
-    </svelte:fragment>
+    {/snippet}
 </InfoBox>
 
 However, this will get cluttered pretty quickly, so we can split our configuration into multiple files.

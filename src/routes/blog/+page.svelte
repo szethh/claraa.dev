@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { fmtDate } from '$lib/utils/blog.js';
 
-	export let data;
+	let { data } = $props();
 
 	const posts = Object.entries(data.posts).sort(
 		(a, b) => new Date(b[1].date).getTime() - new Date(a[1].date).getTime()

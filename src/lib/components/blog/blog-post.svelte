@@ -3,8 +3,14 @@
 	import { fmtDate } from '$lib/utils/blog';
 	import type { SvelteComponent } from 'svelte';
 
-	export let page: typeof SvelteComponent;
-	export let post: Post;
+	interface Props {
+		page: typeof SvelteComponent;
+		post: Post;
+	}
+
+	let { page, post }: Props = $props();
+
+	const SvelteComponent_1 = $derived(page);
 </script>
 
 <svelte:head>
@@ -14,20 +20,20 @@
 <h1>{post.metadata.title}</h1>
 
 <div class="flex gap-2 text-gray-400 mt-1 mb-8">
-	<p>{post.readingTimeText}</p>
+	<div>{post.readingTimeText}</div>
 	<span>·</span>
-	<p>{fmtDate(post.metadata.date)}</p>
+	<div>{fmtDate(post.metadata.date)}</div>
 </div>
 
 <article class="blog-post">
-	<svelte:component this={page}>
+	<SvelteComponent_1>
 		<style>
 			table {
 				border: 5px solid white;
 				border-collapse: collapse;
 			}
 		</style>
-	</svelte:component>
+	</SvelteComponent_1>
 </article>
 
 <style lang="postcss">

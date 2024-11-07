@@ -1,14 +1,17 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-	export let texts: { text: string; color?: string; duration?: number }[];
+	interface Props {
+		texts: { text: string; color?: string; duration?: number }[];
+		duration?: number;
+		pause?: number;
+	}
 
-	export let duration = 100;
-	export let pause = 3000;
+	let { texts, duration = 100, pause = 3000 }: Props = $props();
 
-	let charIdx = 0;
-	let textIdx = 0;
-	$: currentText = texts[textIdx];
+	let charIdx = $state(0);
+	let textIdx = $state(0);
+	let currentText = $derived(texts[textIdx]);
 
 	const next = () => {
 		textIdx = (textIdx + 1) % texts.length;
@@ -49,8 +52,8 @@
 		}
 	};
 
-	let nextTimeout: number | undefined;
-	let typeInterval: number | undefined;
+	let nextTimeout = $state<NodeJS.Timeout>();
+	let typeInterval = $state<NodeJS.Timeout>();
 
 	onMount(() => {
 		typeInterval = setInterval(type, duration);
@@ -58,9 +61,9 @@
 </script>
 
 <div class="flex gap-1 justify-center">
-	<p class={currentText.color}>
+	<div class={currentText.color}>
 		{currentText.text.slice(0, charIdx + 1)}<span class="caret">|</span>
-	</p>
+	</div>
 </div>
 
 <style>
