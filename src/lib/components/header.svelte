@@ -43,8 +43,10 @@
 	);
 </script>
 
-<div class="grid md:grid-cols-2 items-center py-8 md:px-12 px-8 gap-4 bg-stone-800">
-	<nav class="flex gap-10 w-full overflow-hidden">
+<div
+	class="grid md:grid-cols-2 place-items-center items-center py-8 md:px-12 px-8 gap-4 bg-stone-800"
+>
+	<nav class="flex gap-10 w-full overflow-hidden max-md:justify-center">
 		<a href="/" class="flex gap-2 items-center">
 			<b class:underline={$where === 'home'}>About me</b>
 		</a>
@@ -66,7 +68,7 @@
 		</a>
 	</nav>
 
-	<div class="justify-self-center md:justify-self-end">
+	<div class="md:justify-self-end max-md:hidden">
 		<Socials />
 	</div>
 </div>
