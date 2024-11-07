@@ -26,14 +26,14 @@
 </div>
 
 <article class="blog-post">
-	<!-- <SvelteComponent_1>
+	<SvelteComponent_1>
 		<style>
 			table {
 				border: 5px solid white;
 				border-collapse: collapse;
 			}
 		</style>
-	</SvelteComponent_1> -->
+	</SvelteComponent_1>
 </article>
 
 <style lang="postcss">

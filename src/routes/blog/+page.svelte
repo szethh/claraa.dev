@@ -23,9 +23,9 @@
 				<div>
 					<h1>{post.title}</h1>
 
-					<div class="text-zinc-400 text-sm">{fmtDate(post.date)}</div>
+					<p class="text-zinc-400 text-sm">{fmtDate(post.date)}</p>
 
-					<div class="mt-4 text-zinc-300">{post.description}</div>
+					<p class="mt-4 text-zinc-300">{post.description}</p>
 				</div>
 			</div>
 		</a>

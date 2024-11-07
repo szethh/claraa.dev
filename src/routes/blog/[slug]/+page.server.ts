@@ -2,6 +2,7 @@ import { RawPostSchema, type Post } from '$lib/utils/schemas';
 import { Schema } from '@effect/schema';
 import { error } from '@sveltejs/kit';
 import { readingTime } from 'reading-time-estimator';
+import { render } from 'svelte/server';
 
 export const load = async ({ params }) => {
 	const { slug } = params;
@@ -14,9 +15,9 @@ export const load = async ({ params }) => {
 		error(404, `Blog post not found: ${slug}`);
 	}
 
-	const raw = page['$$render']();
+	const { body } = render(page);
 
-	const rt = readingTime(raw);
+	const rt = readingTime(body);
 	// console.log(rt);
 
 	const post: Post = {

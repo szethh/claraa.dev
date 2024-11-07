@@ -63,8 +63,8 @@ devDependencies:
     specifier: ^4.2.2
     version: 4.2.2
   lucide-svelte:
-    specifier: ^0.437.0
-    version: 0.437.0(svelte@5.1.9)
+    specifier: ^0.454.0
+    version: 0.454.0(svelte@5.1.9)
   mdsvex:
     specifier: ^0.11.2
     version: 0.11.2(svelte@5.1.9)
@@ -89,9 +89,6 @@ devDependencies:
   rehype-external-links:
     specifier: ^3.0.0
     version: 3.0.0
-  saos:
-    specifier: ^1.3.1
-    version: 1.3.1
   simple-icons:
     specifier: ^13.16.0
     version: 13.16.0
@@ -2191,8 +2188,8 @@ packages:
     resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
     dev: true
 
-  /lucide-svelte@0.437.0(svelte@5.1.9):
-    resolution: {integrity: sha512-5FaAhypmFL+eIK2t+Rog5ydza8Y9eVEMHlR33bXLrMZveLodRX9/XqNoIpuHxxG7NR4FT5KZZvcPN2V1+kSuIw==}
+  /lucide-svelte@0.454.0(svelte@5.1.9):
+    resolution: {integrity: sha512-TgW17HI7M8LeFZ3NpaDp1LwPGBGMVjx/x81TtK+AacEQvmJcqetqeJNeBT18NMEJP9+zi/Wt+Zc8mo44K5Uszw==}
     peerDependencies:
       svelte: ^3 || ^4 || ^5.0.0-next.42
     dependencies:
@@ -2759,10 +2756,6 @@ packages:
     engines: {node: '>=6'}
     dependencies:
       mri: 1.2.0
-    dev: true
-
-  /saos@1.3.1:
-    resolution: {integrity: sha512-7e2v9yIlyWy29ADHAzukknnzNHIq4oh1mB8uymxzx538B+SFT8/GpRjFa4YwPioe1Ox7qExyV6SFfMvtrSA4EQ==}
     dev: true
 
   /sax@1.4.1:

@@ -6,7 +6,7 @@
 	import { EMAIL, REPO, studies, workExperience } from '$lib/config';
 	import { ArrowDown, ArrowUp } from 'lucide-svelte';
 
-	import Saos from 'saos';
+	import Saos from '$lib/components/saos.svelte';
 	import { getScrollPercent } from '$lib/utils/ui';
 	import { fly } from 'svelte/transition';
 
@@ -71,18 +71,18 @@
 		<h2>about me</h2>
 
 		<div class="!space-y-8 text-xl font-light md:max-w-[60%] card p-8">
-			<div>
+			<p>
 				👋 Hello there! I'm Clara Periago, a web developer from Spain 🇪🇸, currently based in
 				Nijmegen, The Netherlands 🇳🇱.
-			</div>
-			<div>
+			</p>
+			<p>
 				💻 I specialize in fullstack development with SvelteKit and TypeScript. I also have
 				experience building and deploying artificial intelligence models with Python.
-			</div>
-			<div>
+			</p>
+			<p>
 				📖 Currently, I am pursuing a Bachelor in Artificial Intelligence at Radboud University,
 				where I am combining both technical AI development with neuroscience and psychology.
-			</div>
+			</p>
 		</div>
 	</section>
 </Saos>
@@ -104,9 +104,9 @@
 
 					<ExperienceItem {entry} />
 
-					<div class="my-4">
+					<p class="my-4">
 						{entry.description}
-					</div>
+					</p>
 				{/each}
 			</div>
 		</div>
@@ -131,9 +131,9 @@
 					<ExperienceItem {entry} />
 				</div>
 
-				<div class="my-4">
+				<p class="my-4">
 					{entry.description}
-				</div>
+				</p>
 			{/each}
 		</div>
 	</section>
@@ -148,23 +148,23 @@
 		<h2 class="text-right">homelab</h2>
 
 		<div class="space-y-6 card p-8 md:max-w-[60%] ml-auto">
-			<div>
+			<p>
 				As a hobby, I maintain a homelab where I self host a variety of services over multiple
 				networks and servers. Some of the services I run include a home media server with Jellyfin,
 				a home automation server with Home Assistant, and a personal git instance. You can see all
 				of them in my <a href="https://github.com/szethh/nixie" target="_blank">nix repo</a>.
-			</div>
-			<div>
+			</p>
+			<p>
 				I initally used Docker for running most of the apps, as well as
 				<a href="https://github.com/szethh/infra" target="_blank">Ansible</a> for automation, but I am
 				now moving to NixOS. Now most of the services are managed by systemd instead of being in docker
 				containers, and my setup is much more reliable thanks to nix.
-			</div>
-			<div>
+			</p>
+			<p>
 				I started this hobby during the 2020 pandemic, and it has allowed me to learn lots about
 				Docker, Linux and server administration in general. I'm always eager to try new ways of
 				<span class="line-through">breaking</span> improving my infrastructure and keep learning :)
-			</div>
+			</p>
 		</div>
 	</section>
 </Saos>
@@ -178,29 +178,29 @@
 		<h2>technologies</h2>
 
 		<div class="space-y-6 md:max-w-[60%] card p-8">
-			<div class="">Here are some of the technologies I use in my day to day!</div>
+			<p class="">Here are some of the technologies I use in my day to day!</p>
 			<ul class="list-disc space-y-2">
 				<li>
-					<div>
+					<p>
 						For designing websites (like this one!) or at work, I use <TechIcon name="svelte"
 							>SvelteKit</TechIcon
 						> and <TechIcon name="ts">TypeScript</TechIcon>. I specialize in fullstack development,
 						deploying applications on Azure, implementing CI/CD pipelines and containerizing apps
 						with Docker.
-					</div>
+					</p>
 				</li>
 				<li>
-					<div>
+					<p>
 						For data science and machine learning projects, my go-to is <TechIcon name="python"
 							>Python</TechIcon
 						>, which I have more than 4 years of experience with.
-					</div>
+					</p>
 				</li>
 			</ul>
 		</div>
 
 		<div class="mt-8">
-			<div>The full list of technologies I use:</div>
+			<p>The full list of technologies I use:</p>
 
 			<div class="card rounded p-8 md:max-w-[60%] grid md:grid-cols-1 gap-4">
 				<TechEntry name="svelte" stars={4.5}>
@@ -245,10 +245,10 @@
 			</div>
 		</div>
 
-		<div>
+		<p>
 			You can see the source of this website on
 			<a href="https://github.com/szethh/{REPO}" target="_blank">my GitHub</a>.
-		</div>
+		</p>
 	</section>
 </Saos>
 
@@ -260,15 +260,15 @@
 	<section class="text-center">
 		<h2>contact</h2>
 
-		<div>want to contact me?</div>
-		<div>
+		<p>want to contact me?</p>
+		<p>
 			send an email to
 			<a href="mailto:{EMAIL}" target="_blank"><code class="text-cyan-400">{EMAIL}</code></a>
-		</div>
+		</p>
 
-		<div>
+		<p>
 			you can also find me on <TechIcon name="linkedin" cls="!text-cyan-400">LinkedIn</TechIcon>.
-		</div>
+		</p>
 	</section>
 </Saos>
 

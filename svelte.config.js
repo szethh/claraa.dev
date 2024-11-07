@@ -12,7 +12,7 @@ const config = {
 	preprocess: [
 		// vitePreprocess(),
 		mdsvex({
-			extensions: ['.svelte', '.svx'],
+			extensions: ['.svx'],
 			rehypePlugins: [[rehypeExternalLinks, { target: '_blank' }]]
 		}),
 		sveltePreprocess({
