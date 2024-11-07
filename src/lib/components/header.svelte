@@ -43,7 +43,7 @@
 	);
 </script>
 
-<div class="flex justify-between items-center py-8 md:px-12 px-8 gap-4 bg-stone-800">
+<div class="grid md:grid-cols-2 items-center py-8 md:px-12 px-8 gap-4 bg-stone-800">
 	<nav class="flex gap-10 w-full overflow-hidden">
 		<a href="/" class="flex gap-2 items-center">
 			<b class:underline={$where === 'home'}>About me</b>
@@ -66,7 +66,9 @@
 		</a>
 	</nav>
 
-	<Socials />
+	<div class="justify-self-center md:justify-self-end">
+		<Socials />
+	</div>
 </div>
 
 <style>
