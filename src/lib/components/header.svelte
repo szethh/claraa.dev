@@ -23,6 +23,10 @@
 		{
 			route: '/blog/',
 			label: 'blog-post'
+		},
+		{
+			route: '/projects',
+			label: 'projects'
 		}
 	] as const;
 
@@ -42,13 +46,11 @@
 <div class="flex justify-between items-center py-8 md:px-12 px-8 gap-4 bg-stone-800">
 	<nav class="flex gap-10 w-full overflow-hidden">
 		<a href="/" class="flex gap-2 items-center">
-			<!-- <Home /> -->
-			<b class:underline={$where === 'home'}>Me</b>
+			<b class:underline={$where === 'home'}>About me</b>
 		</a>
 
 		<div class="flex gap-4">
 			<a href="/blog" class="flex gap-2 items-center">
-				<!-- <Notebook /> -->
 				<span class:underline={$where === 'blog'}>Blog</span>
 			</a>
 			{#if $blogPost.title && $blogPost.slug}
@@ -58,6 +60,10 @@
 				</a>
 			{/if}
 		</div>
+
+		<a href="/projects">
+			<span class:underline={$where === 'projects'}>Projects</span>
+		</a>
 	</nav>
 
 	<Socials />

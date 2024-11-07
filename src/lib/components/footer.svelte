@@ -5,11 +5,6 @@
 
 <footer class="grid grid-cols-3 items-center py-4 px-12 bg-stone-800">
 	<div class="flex flex-col items-center gap-2 col-start-2">
-		<nav class="flex gap-4">
-			<a href="/">Home</a>
-			<a href="/blog">Blog</a>
-		</nav>
-
 		<a
 			href="https://github.com/szethh/{DOMAIN}"
 			target="_blank"
