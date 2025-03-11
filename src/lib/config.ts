@@ -2,7 +2,7 @@ export const title = '';
 
 export const DOMAIN = 'claraa.dev';
 export const BASE_URL = `https://${DOMAIN}`;
-export const EMAIL = `info@${DOMAIN}`;
+export const EMAIL = `me@${DOMAIN}`;
 export const REPO = `${DOMAIN}`;
 
 export type ExperienceEntry = {
