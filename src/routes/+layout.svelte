@@ -25,7 +25,7 @@
 		data-api="https://ps.szeth.workers.dev/ps/api/event"
 		src="https://ps.szeth.workers.dev/ps/js/index.js"
 	></script>
-	<link rel="me" href="https://social.bnuuy.net/@clara" />
+	<link rel="me" href="https://mastodon.social/@clara_bnuuy" />
 </svelte:head>
 
 <!-- grid grid-rows-[auto_1fr_auto] -->

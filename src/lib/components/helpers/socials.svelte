@@ -9,7 +9,7 @@
 </script>
 
 <div class="flex gap-4 {cls}">
-	<a href="https://social.bnuuy.net/@clara" target="_blank" class="text-zinc-400">
+	<a href="https://mastodon.social/@clara_bnuuy" target="_blank" class="text-zinc-400">
 		<SiIcon name="Mastodon" />
 	</a>
 
