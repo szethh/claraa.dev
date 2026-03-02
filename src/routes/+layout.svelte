@@ -21,9 +21,8 @@
 <svelte:head>
 	<script
 		defer
-		data-domain={DOMAIN}
-		data-api="https://ps.szeth.workers.dev/ps/api/event"
-		src="https://ps.szeth.workers.dev/ps/js/index.js"
+		src="https://analytics.bnuuy.net/index2.js"
+		data-website-id="acce78de-d941-454b-9db2-d87c93b95db9"
 	></script>
 	<link rel="me" href="https://mastodon.social/@clara_bnuuy" />
 </svelte:head>
